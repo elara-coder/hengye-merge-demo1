@@ -8,6 +8,7 @@ import Index from "./pages/Index.tsx";
 import Applications from "./pages/Applications.tsx";
 import Products from "./pages/Products.tsx";
 import Engineering from "./pages/Engineering.tsx";
+import CaseDetail from "./pages/CaseDetail.tsx";
 import Support from "./pages/Support.tsx";
 import About from "./pages/About.tsx";
 import Contact from "./pages/Contact.tsx";
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/applications" element={<Applications />} />
             <Route path="/products" element={<Products />} />
             <Route path="/engineering" element={<Engineering />} />
+            <Route path="/engineering/cases/:slug" element={<CaseDetail />} />
             <Route path="/support" element={<Support />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
