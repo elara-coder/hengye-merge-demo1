@@ -1,8 +1,24 @@
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ShieldCheck, Boxes, Microscope, Ruler, FileText, Globe2, Package, Languages, Truck, Repeat } from "lucide-react";
+import {
+  ArrowUpRight,
+  ArrowRight,
+  ShieldCheck,
+  Boxes,
+  Microscope,
+  Ruler,
+  FileText,
+  Globe2,
+  Package,
+  Languages,
+  Truck,
+  Repeat,
+  X,
+  Download,
+} from "lucide-react";
 import { PageHero } from "@/components/site/Primitives";
 import RFQBlock from "@/components/site/RFQBlock";
-import { CASES } from "@/data/cases";
+import { CASES, type CaseStudy } from "@/data/cases";
 import factory from "@/assets/factory-floor.jpg";
 
 const QC_ITEMS = [
@@ -22,7 +38,183 @@ const SUPPLY_ITEMS = [
   { icon: Globe2, label: "Long-Cycle Supply Capability", detail: "Multi-year frame agreements with quarterly call-offs; safety stock policy per key account." },
 ];
 
+function DetailBlock({ num, label, children }: { num: string; label: string; children: React.ReactNode }) {
+  return (
+    <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 py-8 border-b border-border last:border-b-0">
+      <div className="lg:col-span-3">
+        <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">— {num}</div>
+        <h4 className="mt-2 font-display text-lg lg:text-xl font-semibold leading-snug">{label}</h4>
+      </div>
+      <div className="lg:col-span-9">{children}</div>
+    </div>
+  );
+}
+
+function CaseDetailPanel({ c, onClose }: { c: CaseStudy; onClose: () => void }) {
+  return (
+    <div className="bg-background border border-border">
+      {/* Detail header */}
+      <div className="relative border-b border-border bg-surface-dark text-white overflow-hidden">
+        <img src={c.image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-surface-dark via-surface-dark/85 to-surface-dark/40" />
+        <div className="relative p-8 lg:p-12 flex items-start justify-between gap-6">
+          <div className="max-w-3xl">
+            <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-primary">
+              Case {c.num} · {c.industry}
+            </div>
+            <h3 className="mt-3 font-display text-2xl lg:text-4xl font-semibold leading-tight">{c.name}</h3>
+            <p className="mt-4 text-white/75 text-sm lg:text-base leading-relaxed">{c.challenge}</p>
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="Close case detail"
+            className="shrink-0 inline-flex items-center justify-center h-10 w-10 border border-white/30 text-white hover:bg-white hover:text-foreground transition-colors"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+
+      <div className="p-6 lg:p-10">
+        <DetailBlock num="01" label="Project Overview">
+          <p className="text-[15px] text-muted-foreground leading-relaxed max-w-3xl">{c.overview}</p>
+          <div className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
+            {[
+              ["Industry", c.industry],
+              ["Product Family", c.family],
+              ["Configuration", "TSA / PSA · Multi-bed"],
+              ["Reference Type", "Benchmark Project"],
+            ].map(([k, v]) => (
+              <div key={k} className="bg-background p-4">
+                <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{k}</div>
+                <div className="mt-2 font-display text-[14px] font-semibold leading-snug">{v}</div>
+              </div>
+            ))}
+          </div>
+        </DetailBlock>
+
+        <DetailBlock num="02" label="Industrial Challenge">
+          <ul className="divide-y divide-border border-y border-border">
+            {c.industrialChallenge.map((line, i) => (
+              <li key={i} className="py-3 flex gap-5">
+                <span className="font-mono text-[11px] text-primary pt-1 w-8">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-[14px] leading-relaxed">{line}</span>
+              </li>
+            ))}
+          </ul>
+        </DetailBlock>
+
+        <DetailBlock num="03" label="Process Flow / System Diagram">
+          <div className="grid md:grid-cols-5 gap-px bg-border border border-border">
+            {c.processFlow.map((s) => (
+              <div key={s.step} className="bg-background p-4 flex flex-col">
+                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">{s.step}</div>
+                <div className="mt-2 font-display text-[13px] font-semibold leading-snug">{s.label}</div>
+                <p className="mt-2 text-[12px] text-muted-foreground leading-relaxed">{s.detail}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+            Schematic representation · simplified for reference use
+          </p>
+        </DetailBlock>
+
+        <DetailBlock num="04" label="Adsorbent Solution">
+          <div className="border border-border">
+            <div className="hidden md:grid grid-cols-12 gap-4 px-5 py-3 bg-surface font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground border-b border-border">
+              <div className="col-span-4">Product</div>
+              <div className="col-span-4">Role in Process</div>
+              <div className="col-span-4">Technical Specification</div>
+            </div>
+            {c.adsorbentSolution.map((a) => (
+              <div key={a.product} className="grid md:grid-cols-12 gap-4 px-5 py-4 border-b border-border last:border-b-0">
+                <div className="md:col-span-4 font-display text-[14px] font-semibold">{a.product}</div>
+                <div className="md:col-span-4 text-[13px] text-muted-foreground leading-relaxed">{a.role}</div>
+                <div className="md:col-span-4 font-mono text-[12px] leading-relaxed">{a.spec}</div>
+              </div>
+            ))}
+          </div>
+        </DetailBlock>
+
+        <DetailBlock num="05" label="Technical Benefits">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
+            {c.technicalBenefits.map((b) => (
+              <div key={b.metric} className="bg-background p-5">
+                <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{b.metric}</div>
+                <div className="mt-2 font-display text-xl lg:text-2xl font-bold">{b.value}</div>
+                <p className="mt-2 text-[12px] text-muted-foreground leading-relaxed">{b.note}</p>
+              </div>
+            ))}
+          </div>
+        </DetailBlock>
+
+        <DetailBlock num="06" label="Downloads & Inquiry">
+          <div className="grid lg:grid-cols-2 gap-6">
+            <div className="border border-border">
+              <div className="px-5 py-3 bg-surface font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground border-b border-border">
+                Technical Documents
+              </div>
+              <ul>
+                {c.downloads.map((d) => (
+                  <li key={d} className="flex items-center justify-between gap-4 px-5 py-3 border-b border-border last:border-b-0 group">
+                    <div className="flex items-center gap-3">
+                      <FileText className="h-4 w-4 text-primary shrink-0" />
+                      <span className="text-[13px]">{d}</span>
+                    </div>
+                    <Download className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </li>
+                ))}
+              </ul>
+              <p className="px-5 py-3 font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground border-t border-border">
+                Documents released against signed NDA where applicable.
+              </p>
+            </div>
+
+            <div className="bg-surface-dark text-white p-6 lg:p-8 flex flex-col">
+              <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">— Project Inquiry</div>
+              <h4 className="mt-3 font-display text-xl font-semibold leading-tight">
+                Discuss this configuration with our process team.
+              </h4>
+              <p className="mt-3 text-white/70 text-[13px] leading-relaxed">
+                Share your feed composition, cycle time and capacity target. We respond within one business day with
+                a layered loading proposal and indicative delivery schedule.
+              </p>
+              <div className="mt-auto pt-6 flex flex-col sm:flex-row gap-3">
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center justify-between h-11 px-4 bg-primary text-primary-foreground hover:bg-primary-deep transition-colors flex-1"
+                >
+                  <span className="text-[11px] font-medium uppercase tracking-[0.15em]">Submit Project RFQ</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  to="/products"
+                  className="group inline-flex items-center justify-between h-11 px-4 border border-white/30 text-white hover:bg-white hover:text-foreground transition-colors flex-1"
+                >
+                  <span className="text-[11px] font-medium uppercase tracking-[0.15em]">View Product Family</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </DetailBlock>
+      </div>
+    </div>
+  );
+}
+
 export default function Engineering() {
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
+  const detailRef = useRef<HTMLDivElement>(null);
+
+  const activeCase = CASES.find((c) => c.slug === activeSlug) ?? null;
+
+  useEffect(() => {
+    if (activeCase && detailRef.current) {
+      detailRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [activeSlug, activeCase]);
+
   return (
     <>
       <PageHero
@@ -57,51 +249,71 @@ export default function Engineering() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
-            {CASES.map((c) => (
-              <Link
-                key={c.slug}
-                to={`/engineering/cases/${c.slug}`}
-                className="group bg-background flex flex-col hover-lift"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={c.image} alt={c.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-                  <div className="absolute top-3 left-3 bg-background/95 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
-                    Case {c.num}
+            {CASES.map((c) => {
+              const isActive = c.slug === activeSlug;
+              return (
+                <button
+                  key={c.slug}
+                  type="button"
+                  onClick={() => setActiveSlug(isActive ? null : c.slug)}
+                  aria-expanded={isActive}
+                  className={`group bg-background flex flex-col text-left hover-lift transition-colors ${
+                    isActive ? "ring-2 ring-primary ring-inset" : ""
+                  }`}
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img src={c.image} alt={c.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+                    <div className="absolute top-3 left-3 bg-background/95 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
+                      Case {c.num}
+                    </div>
                   </div>
-                </div>
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{c.industry}</div>
-                  <h3 className="mt-2 font-display text-lg font-semibold leading-snug">{c.name}</h3>
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{c.industry}</div>
+                    <h3 className="mt-2 font-display text-lg font-semibold leading-snug">{c.name}</h3>
 
-                  <dl className="mt-5 space-y-3 text-[13px] flex-1">
-                    <div>
-                      <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">Challenge</dt>
-                      <dd className="mt-1 leading-relaxed">{c.challenge}</dd>
-                    </div>
-                    <div>
-                      <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">Solution</dt>
-                      <dd className="mt-1 leading-relaxed text-muted-foreground">{c.solution}</dd>
-                    </div>
-                    <div className="grid grid-cols-2 gap-3 pt-2">
+                    <dl className="mt-5 space-y-3 text-[13px] flex-1">
                       <div>
-                        <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">Family</dt>
-                        <dd className="mt-1 text-[12px] leading-snug">{c.family}</dd>
+                        <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">Challenge</dt>
+                        <dd className="mt-1 leading-relaxed">{c.challenge}</dd>
                       </div>
                       <div>
-                        <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">Benefit</dt>
-                        <dd className="mt-1 text-[12px] leading-snug">{c.benefit}</dd>
+                        <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">Solution</dt>
+                        <dd className="mt-1 leading-relaxed text-muted-foreground">{c.solution}</dd>
                       </div>
-                    </div>
-                  </dl>
+                      <div className="grid grid-cols-2 gap-3 pt-2">
+                        <div>
+                          <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">Family</dt>
+                          <dd className="mt-1 text-[12px] leading-snug">{c.family}</dd>
+                        </div>
+                        <div>
+                          <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">Benefit</dt>
+                          <dd className="mt-1 text-[12px] leading-snug">{c.benefit}</dd>
+                        </div>
+                      </div>
+                    </dl>
 
-                  <div className="mt-6 pt-5 border-t border-border flex items-center justify-between">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">Explore Case</span>
-                    <ArrowUpRight className="h-4 w-4 text-primary transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <div className="mt-6 pt-5 border-t border-border flex items-center justify-between">
+                      <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
+                        {isActive ? "Close Case" : "Explore Case"}
+                      </span>
+                      <ArrowUpRight
+                        className={`h-4 w-4 text-primary transition-transform ${
+                          isActive ? "rotate-90" : "group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        }`}
+                      />
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </button>
+              );
+            })}
           </div>
+
+          {/* Inline detail panel */}
+          {activeCase && (
+            <div ref={detailRef} className="mt-10 scroll-mt-24">
+              <CaseDetailPanel c={activeCase} onClose={() => setActiveSlug(null)} />
+            </div>
+          )}
         </div>
       </section>
 
