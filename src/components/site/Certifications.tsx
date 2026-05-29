@@ -1,10 +1,10 @@
 import { ShieldCheck } from "lucide-react";
 
 const certs = [
-  { code: "ISO 9001", name: "Quality Management System", desc: "Certified manufacturing & QC processes." },
-  { code: "REACH", name: "EU Chemical Registration", desc: "Compliant for export to European markets." },
-  { code: "EAC", name: "Russia / CIS Conformity", desc: "TR CU declarations for full sieve portfolio." },
-  { code: "COA", name: "Certificate of Analysis", desc: "Batch-specific quality verification, EN / RU / CN." },
+  { code: "ISO 9001", name: "质量管理体系", desc: "已通过认证的生产与质控流程。" },
+  { code: "REACH", name: "欧盟化学品注册", desc: "符合出口欧洲市场的合规要求。" },
+  { code: "EAC", name: "俄罗斯 / 独联体认证", desc: "全系列分子筛取得 TR CU 符合性声明。" },
+  { code: "COA", name: "批次质量证明", desc: "每批次随附中英俄三语 COA 文件。" },
 ];
 
 const Certifications = () => (
@@ -12,9 +12,9 @@ const Certifications = () => (
     <div className="container-wide">
       <div className="grid lg:grid-cols-12 gap-10 mb-12">
         <div className="lg:col-span-8">
-          <div className="eyebrow mb-4">— Certifications & Compliance</div>
+          <div className="eyebrow mb-4">— 资质认证与合规</div>
           <h2 className="font-display text-3xl lg:text-4xl font-semibold tracking-tight leading-tight">
-            Documented, audited, internationally recognized.
+            完备文档 · 国际审核 · 全球认可
           </h2>
         </div>
       </div>
@@ -24,7 +24,7 @@ const Certifications = () => (
           <div key={c.code} className="bg-background p-7 hover-lift">
             <div className="flex items-start justify-between mb-8">
               <ShieldCheck className="h-7 w-7 text-primary" strokeWidth={1.5} />
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Verified</span>
+              <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground">已验证</span>
             </div>
             <div className="font-display text-2xl font-bold tracking-tight mb-2">{c.code}</div>
             <div className="text-sm font-medium text-foreground mb-2">{c.name}</div>

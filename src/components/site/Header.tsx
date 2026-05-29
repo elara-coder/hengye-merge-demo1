@@ -3,12 +3,12 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const NAV = [
-  { to: "/applications", label: "Applications" },
-  { to: "/products", label: "Products" },
-  { to: "/engineering", label: "Engineering Capability" },
-  { to: "/support", label: "Technical Support" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { to: "/applications", label: "应用领域" },
+  { to: "/products", label: "产品中心" },
+  { to: "/engineering", label: "工程能力" },
+  { to: "/support", label: "技术支持" },
+  { to: "/about", label: "关于我们" },
+  { to: "/contact", label: "联系我们" },
 ];
 
 const Header = () => {
@@ -20,20 +20,20 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur">
       <div className="bg-ink text-background">
         <div className="container-wide flex h-7 items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em]">
-          <span className="opacity-70">Shanghai Hengye Micron Co., Ltd. · 上海恒业微晶</span>
-          <span className="hidden md:block opacity-70">EN · RU · 中文 · ISO 9001 / 14001 · REACH · EAC</span>
+          <span className="opacity-70">上海恒业微晶科技有限公司 · Shanghai Hengye Micron</span>
+          <span className="hidden md:block opacity-70">中文 · EN · RU · ISO 9001 / 14001 · REACH · EAC</span>
         </div>
       </div>
 
       <div className="container-wide flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-3" aria-label="Hengye Micron home">
+        <Link to="/" className="flex items-center gap-3" aria-label="恒业微晶首页">
           <div className="flex h-9 w-9 items-center justify-center bg-primary text-primary-foreground">
-            <span className="font-display text-lg font-bold leading-none">H</span>
+            <span className="font-display text-lg font-bold leading-none">恒</span>
           </div>
           <div className="leading-tight">
-            <div className="font-display text-[15px] font-bold tracking-tight">HENGYE MICRON</div>
+            <div className="font-display text-[15px] font-bold tracking-tight">恒业微晶 HENGYE</div>
             <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
-              Industrial Adsorbents · Since 1998
+              工业吸附剂 · 始于 1998
             </div>
           </div>
         </Link>
@@ -56,17 +56,17 @@ const Header = () => {
 
         <div className="hidden lg:flex items-center gap-3">
           <button className="font-mono text-[11px] uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">
-            EN / RU
+            中 / EN
           </button>
           <Link
             to="/contact"
-            className="inline-flex items-center h-10 px-5 bg-primary text-primary-foreground text-[12px] font-medium uppercase tracking-[0.12em] hover:bg-primary-deep transition-colors"
+            className="inline-flex items-center h-10 px-5 bg-primary text-primary-foreground text-[12px] font-medium tracking-[0.12em] hover:bg-primary-deep transition-colors"
           >
-            Request Quote
+            询价咨询
           </Link>
         </div>
 
-        <button className="lg:hidden p-2" onClick={() => setOpen(!open)} aria-label="Menu">
+        <button className="lg:hidden p-2" onClick={() => setOpen(!open)} aria-label="菜单">
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
@@ -87,9 +87,9 @@ const Header = () => {
             ))}
             <Link
               to="/contact"
-              className="mt-3 inline-flex items-center justify-center h-11 px-5 bg-primary text-primary-foreground text-[12px] font-medium uppercase tracking-[0.12em]"
+              className="mt-3 inline-flex items-center justify-center h-11 px-5 bg-primary text-primary-foreground text-[12px] font-medium tracking-[0.12em]"
             >
-              Request Quote
+              询价咨询
             </Link>
           </div>
         </div>
