@@ -21,133 +21,133 @@ type Product = {
 
 const PRODUCTS: Product[] = [
   {
-    id: "3a", code: "3A", name: "Zeolite Molecular Sieve 3A", family: "sieve",
+    id: "3a", code: "3A", name: "3A 沸石分子筛", family: "sieve",
     formula: "0.4 K₂O · 0.6 Na₂O · Al₂O₃ · 2.0 SiO₂ · n H₂O",
-    intro: "Potassium form of Type A. Effective pore diameter 3 Å. Selective for water in the presence of polymerizable species — the standard for cracked gas, ethylene, propylene and ethanol drying.",
-    uses: ["Cracked gas dehydration", "Olefin (ethylene / propylene) drying", "Ethanol & alcohol drying", "Insulating glass spacer bars", "Refrigerant drying"],
+    intro: "A 型钾交换分子筛,有效孔径 3 Å。在存在易聚合分子的工况中可选择性吸附水分——是裂解气、乙烯、丙烯及乙醇干燥的行业标准。",
+    uses: ["裂解气脱水", "烯烃(乙烯 / 丙烯)干燥", "乙醇及醇类干燥", "中空玻璃间隔条", "制冷剂干燥"],
     specs: [
-      { k: "Pore diameter", v: "3 Å" },
-      { k: "H₂O adsorption", v: "≥ 21 wt%" },
-      { k: "Bulk density", v: "0.70 g/ml" },
-      { k: "Crush strength", v: "≥ 30 N (1.6 mm)" },
-      { k: "Attrition loss", v: "≤ 0.2 wt%" },
-      { k: "Particle size", v: "1.6–2.5 / 3.0–5.0 mm" },
+      { k: "孔径", v: "3 Å" },
+      { k: "吸水率", v: "≥ 21 wt%" },
+      { k: "堆密度", v: "0.70 g/ml" },
+      { k: "抗压强度", v: "≥ 30 N (1.6 mm)" },
+      { k: "磨耗率", v: "≤ 0.2 wt%" },
+      { k: "粒径", v: "1.6–2.5 / 3.0–5.0 mm" },
     ],
-    forms: ["Bead", "Pellet 1/16″", "Pellet 1/8″"],
+    forms: ["球状", "条状 1/16″", "条状 1/8″"],
     image: sieveMacro,
   },
   {
-    id: "4a", code: "4A", name: "Zeolite Molecular Sieve 4A", family: "sieve",
+    id: "4a", code: "4A", name: "4A 沸石分子筛", family: "sieve",
     formula: "Na₂O · Al₂O₃ · 2.0 SiO₂ · 4.5 H₂O",
-    intro: "Sodium form Type A — pore diameter 4 Å. The most widely deployed industrial desiccant for static and dynamic drying of gases, liquids and refrigerants.",
-    uses: ["Natural gas dehydration", "Compressed air & instrument air", "Solvent dehydration", "LPG / LNG drying", "Drug & food packaging"],
+    intro: "A 型钠交换分子筛,孔径 4 Å。是应用最广泛的工业干燥剂,适用于气体、液体及制冷剂的静态与动态深度干燥。",
+    uses: ["天然气脱水", "压缩空气及仪表风", "溶剂脱水", "LPG / LNG 干燥", "药品与食品包装"],
     specs: [
-      { k: "Pore diameter", v: "4 Å" },
-      { k: "H₂O adsorption", v: "≥ 21.5 wt%" },
-      { k: "Bulk density", v: "0.70 g/ml" },
-      { k: "Crush strength", v: "≥ 90 N (3.0 mm)" },
-      { k: "Particle size", v: "1.6 / 3.2 / 4.0 mm" },
-      { k: "Loss on ignition", v: "≤ 1.5 wt%" },
+      { k: "孔径", v: "4 Å" },
+      { k: "吸水率", v: "≥ 21.5 wt%" },
+      { k: "堆密度", v: "0.70 g/ml" },
+      { k: "抗压强度", v: "≥ 90 N (3.0 mm)" },
+      { k: "粒径", v: "1.6 / 3.2 / 4.0 mm" },
+      { k: "灼减", v: "≤ 1.5 wt%" },
     ],
-    forms: ["Bead", "Pellet", "Powder"],
+    forms: ["球状", "条状", "粉末"],
     image: sieveMacro,
   },
   {
-    id: "5a", code: "5A", name: "Zeolite Molecular Sieve 5A", family: "sieve",
+    id: "5a", code: "5A", name: "5A 沸石分子筛", family: "sieve",
     formula: "0.7 CaO · 0.3 Na₂O · Al₂O₃ · 2.0 SiO₂ · n H₂O",
-    intro: "Calcium-exchanged Type A — pore 5 Å. Adsorbs n-paraffins (C₄–C₂₂) while excluding iso/cyclic structures. Workhorse of H₂ PSA, oxygen VPSA and natural gas dehydration.",
-    uses: ["H₂ PSA purification", "Oxygen & nitrogen PSA / VPSA", "n-Paraffin separation", "Natural gas dual H₂O + H₂S removal", "Medical oxygen concentrators"],
+    intro: "A 型钙交换分子筛,孔径 5 Å。可吸附正构烷烃(C₄–C₂₂)而排除异构与环状结构,广泛用于氢气 PSA、制氧 VPSA 及天然气脱水。",
+    uses: ["氢气 PSA 提纯", "制氧 / 制氮 PSA / VPSA", "正构烷烃分离", "天然气同步脱水脱硫", "医用氧气浓缩器"],
     specs: [
-      { k: "Pore diameter", v: "5 Å" },
-      { k: "H₂O adsorption", v: "≥ 21.5 wt%" },
-      { k: "N₂ adsorption", v: "≥ 8.5 ml/g" },
-      { k: "Bulk density", v: "0.72 g/ml" },
-      { k: "Crush strength", v: "≥ 90 N" },
-      { k: "Cycle resistance", v: "Validated >1M cycles" },
+      { k: "孔径", v: "5 Å" },
+      { k: "吸水率", v: "≥ 21.5 wt%" },
+      { k: "氮吸附量", v: "≥ 8.5 ml/g" },
+      { k: "堆密度", v: "0.72 g/ml" },
+      { k: "抗压强度", v: "≥ 90 N" },
+      { k: "循环寿命", v: "已验证 100 万次以上" },
     ],
-    forms: ["Bead", "Pellet"],
+    forms: ["球状", "条状"],
     image: sieveMacro,
   },
   {
-    id: "13x", code: "13X", name: "Zeolite Molecular Sieve 13X", family: "sieve",
+    id: "13x", code: "13X", name: "13X 沸石分子筛", family: "sieve",
     formula: "Na₂O · Al₂O₃ · 2.8 SiO₂ · 6.0 H₂O",
-    intro: "Sodium form of Type X — pore 10 Å. Higher pore volume than Type A. The standard for ASU pre-purification (CO₂ + H₂O) and gas sweetening.",
-    uses: ["Air pre-purification (ASU)", "CO₂ + H₂O co-removal", "Mercaptan removal from NG / LPG", "H₂S removal", "Aromatics separation"],
+    intro: "X 型钠交换分子筛,孔径 10 Å。孔容大于 A 型,是空分前端净化(CO₂ + H₂O)及天然气脱硫的行业标准。",
+    uses: ["空分预净化 (ASU)", "CO₂ + H₂O 协同脱除", "天然气 / LPG 脱硫醇", "脱硫化氢", "芳烃分离"],
     specs: [
-      { k: "Pore diameter", v: "10 Å" },
-      { k: "H₂O adsorption", v: "≥ 25 wt%" },
-      { k: "CO₂ adsorption", v: "≥ 18 wt%" },
-      { k: "Bulk density", v: "0.65 g/ml" },
-      { k: "Crush strength", v: "≥ 90 N (3.2 mm)" },
-      { k: "Grades", v: "APG · LNG · HP" },
+      { k: "孔径", v: "10 Å" },
+      { k: "吸水率", v: "≥ 25 wt%" },
+      { k: "CO₂ 吸附", v: "≥ 18 wt%" },
+      { k: "堆密度", v: "0.65 g/ml" },
+      { k: "抗压强度", v: "≥ 90 N (3.2 mm)" },
+      { k: "牌号", v: "APG · LNG · HP" },
     ],
-    forms: ["Bead", "Pellet"],
+    forms: ["球状", "条状"],
     image: sieveMacro,
   },
   {
-    id: "alumina", code: "AL", name: "Activated Alumina", family: "alumina",
+    id: "alumina", code: "AL", name: "活性氧化铝", family: "alumina",
     formula: "γ-Al₂O₃",
-    intro: "High-purity smooth spherical γ-Al₂O₃ with controlled pore structure. Engineered for compressed-air dryers, PSA pre-treatment, defluorination of water, and as a catalyst support.",
-    uses: ["Compressed air drying", "PSA pre-treatment layer", "Defluorination of drinking water", "H₂O₂ stabilization", "Catalyst support"],
+    intro: "高纯度光滑球状 γ-Al₂O₃,具有受控的孔结构。适用于压缩空气干燥、PSA 前处理、水脱氟,亦可作为催化剂载体。",
+    uses: ["压缩空气干燥", "PSA 前处理层", "饮用水脱氟", "H₂O₂ 稳定", "催化剂载体"],
     specs: [
-      { k: "Surface area (BET)", v: "≥ 320 m²/g" },
-      { k: "Pore volume", v: "≥ 0.40 ml/g" },
-      { k: "Bulk density", v: "0.72 g/ml" },
-      { k: "Crush strength", v: "≥ 130 N" },
-      { k: "Particle size", v: "3–5 / 5–7 mm" },
-      { k: "Loss on attrition", v: "≤ 0.3 wt%" },
+      { k: "比表面 (BET)", v: "≥ 320 m²/g" },
+      { k: "孔容", v: "≥ 0.40 ml/g" },
+      { k: "堆密度", v: "0.72 g/ml" },
+      { k: "抗压强度", v: "≥ 130 N" },
+      { k: "粒径", v: "3–5 / 5–7 mm" },
+      { k: "磨耗损失", v: "≤ 0.3 wt%" },
     ],
-    forms: ["Sphere 3–5 mm", "Sphere 5–7 mm", "Custom"],
+    forms: ["3–5 mm 球", "5–7 mm 球", "定制"],
     image: aluminaMacro,
   },
   {
-    id: "catalysts", code: "CAT", name: "Engineered Catalysts", family: "catalyst",
-    formula: "γ-Al₂O₃ supported · Ni / Pd / Cu / Zn formulations",
-    intro: "Engineered catalysts on high-purity γ-Al₂O₃ supports for selective hydrogenation, dehydration and methanol-to-olefin duty. Custom shapes, loadings and surface chemistry per process specification.",
+    id: "catalysts", code: "CAT", name: "工业催化剂", family: "catalyst",
+    formula: "γ-Al₂O₃ 载体 · Ni / Pd / Cu / Zn 配方",
+    intro: "采用高纯 γ-Al₂O₃ 载体的工程化催化剂,适用于选择性加氢、脱水及甲醇制烯烃工艺。可根据工艺要求定制形状、负载量与表面化学性质。",
     uses: [
-      "Selective hydrogenation (C₂–C₄ streams)",
-      "Methanol / ethanol dehydration",
-      "Hydrocarbon isomerization supports",
-      "Sulphur guard beds",
-      "Custom catalyst carrier fabrication",
+      "选择性加氢(C₂–C₄ 物流)",
+      "甲醇 / 乙醇脱水",
+      "烃类异构化载体",
+      "脱硫保护床",
+      "定制催化剂载体加工",
     ],
     specs: [
-      { k: "Surface area (BET)", v: "180–280 m²/g" },
-      { k: "Active metal loading", v: "0.3 – 18 wt%" },
-      { k: "Crush strength", v: "≥ 110 N" },
-      { k: "Bulk density", v: "0.65 – 0.85 g/ml" },
-      { k: "Shapes", v: "Sphere · Tri-lobe · Ring" },
-      { k: "MOQ (custom)", v: "From 500 kg" },
+      { k: "比表面 (BET)", v: "180–280 m²/g" },
+      { k: "活性金属负载量", v: "0.3 – 18 wt%" },
+      { k: "抗压强度", v: "≥ 110 N" },
+      { k: "堆密度", v: "0.65 – 0.85 g/ml" },
+      { k: "形状", v: "球 · 三叶 · 环" },
+      { k: "起订量 (定制)", v: "500 kg 起" },
     ],
-    forms: ["Sphere", "Tri-lobe extrudate", "Ring", "Custom"],
+    forms: ["球状", "三叶挤出条", "环状", "定制"],
     image: catalystImg,
   },
 ];
 
 const NAV: { label: string; items: { id: string; code: string; name: string }[] }[] = [
   {
-    label: "Zeolite Molecular Sieves",
+    label: "沸石分子筛",
     items: [
-      { id: "3a", code: "3A", name: "Type A — Ethanol & olefin drying" },
-      { id: "4a", code: "4A", name: "Type A — General drying" },
-      { id: "5a", code: "5A", name: "Type A — PSA H₂ / O₂ / N₂" },
-      { id: "13x", code: "13X", name: "Type X — ASU pre-purification" },
+      { id: "3a", code: "3A", name: "A 型 — 乙醇与烯烃干燥" },
+      { id: "4a", code: "4A", name: "A 型 — 通用干燥" },
+      { id: "5a", code: "5A", name: "A 型 — PSA H₂ / O₂ / N₂" },
+      { id: "13x", code: "13X", name: "X 型 — 空分预净化" },
     ],
   },
   {
-    label: "Activated Alumina",
+    label: "活性氧化铝",
     items: [
-      { id: "alumina", code: "AL-DRY", name: "Drying Grade" },
-      { id: "alumina", code: "AL-PSA", name: "PSA Grade" },
-      { id: "alumina", code: "AL-DEF", name: "Defluorination Grade" },
+      { id: "alumina", code: "AL-DRY", name: "干燥级" },
+      { id: "alumina", code: "AL-PSA", name: "PSA 级" },
+      { id: "alumina", code: "AL-DEF", name: "脱氟级" },
     ],
   },
   {
-    label: "Catalysts",
+    label: "催化剂",
     items: [
-      { id: "catalysts", code: "CAT-HY", name: "Hydrogenation" },
-      { id: "catalysts", code: "CAT-DE", name: "Dehydration" },
-      { id: "catalysts", code: "CAT-CS", name: "Custom Carriers" },
+      { id: "catalysts", code: "CAT-HY", name: "加氢催化剂" },
+      { id: "catalysts", code: "CAT-DE", name: "脱水催化剂" },
+      { id: "catalysts", code: "CAT-CS", name: "定制载体" },
     ],
   },
 ];
@@ -156,9 +156,9 @@ export default function Products() {
   return (
     <>
       <PageHero
-        eyebrow="Products"
-        title="Engineered zeolites, activated alumina & catalysts"
-        intro="Beads, pellets, spheres and powders manufactured to industrial specification — full traceability from raw kaolin and alumina to finished lot, with EN · RU · CN documentation."
+        eyebrow="产品中心"
+        title="工程化沸石、活性氧化铝与催化剂"
+        intro="按工业规格生产的球状、条状、粉末等多种形态产品——从原料高岭土与氧化铝至成品批次全程可追溯,提供中英俄三语技术文档。"
         image={sieveMacro}
       />
 
@@ -196,12 +196,12 @@ export default function Products() {
         >
           <div className="container-wide grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
+              <div className="font-mono text-[11px] tracking-[0.18em] text-primary">
                 {p.family === "sieve"
-                  ? "Zeolite Molecular Sieve"
+                  ? "沸石分子筛"
                   : p.family === "alumina"
-                  ? "Activated Alumina"
-                  : "Catalyst"}
+                  ? "活性氧化铝"
+                  : "催化剂"}
               </div>
               <h2 className="mt-3 h-section font-display">{p.name}</h2>
               <p className="mt-3 font-mono text-sm text-muted-foreground">{p.formula}</p>
@@ -210,7 +210,7 @@ export default function Products() {
             </div>
             <div className="lg:col-span-7 space-y-10">
               <div>
-                <div className="eyebrow">— Typical Applications</div>
+                <div className="eyebrow">— 典型应用</div>
                 <ul className="mt-4 grid sm:grid-cols-2 gap-x-8">
                   {p.uses.map((u) => (
                     <li key={u} className="flex items-baseline gap-3 border-b border-border py-2.5 text-sm">
@@ -221,7 +221,7 @@ export default function Products() {
                 </ul>
               </div>
               <div>
-                <div className="eyebrow">— Specification</div>
+                <div className="eyebrow">— 技术规格</div>
                 <div className="mt-4 grid sm:grid-cols-2 gap-x-10">
                   {p.specs.map((s) => (
                     <div key={s.k} className="data-row">
@@ -232,12 +232,12 @@ export default function Products() {
                 </div>
               </div>
               <div>
-                <div className="eyebrow">— Available Forms</div>
+                <div className="eyebrow">— 可供形态</div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {p.forms.map((f) => (
                     <span
                       key={f}
-                      className="border border-border px-4 py-2 font-mono text-xs uppercase tracking-[0.18em]"
+                      className="border border-border px-4 py-2 font-mono text-xs tracking-[0.18em]"
                     >
                       {f}
                     </span>
@@ -247,15 +247,15 @@ export default function Products() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/contact"
-                  className="bg-primary px-5 py-3 font-mono text-xs uppercase tracking-[0.18em] text-primary-foreground hover:bg-primary-deep inline-flex items-center gap-2"
+                  className="bg-primary px-5 py-3 font-mono text-xs tracking-[0.18em] text-primary-foreground hover:bg-primary-deep inline-flex items-center gap-2"
                 >
-                  Request quotation <ArrowRight className="size-3.5" />
+                  申请报价 <ArrowRight className="size-3.5" />
                 </Link>
                 <Link
                   to="/support"
-                  className="border border-border px-5 py-3 font-mono text-xs uppercase tracking-[0.18em] hover:border-primary"
+                  className="border border-border px-5 py-3 font-mono text-xs tracking-[0.18em] hover:border-primary"
                 >
-                  Download TDS / SDS
+                  下载 TDS / SDS
                 </Link>
               </div>
             </div>

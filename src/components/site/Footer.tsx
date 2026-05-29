@@ -2,46 +2,46 @@ import { Link } from "react-router-dom";
 
 const cols = [
   {
-    title: "Navigation",
+    title: "网站导航",
     items: [
-      { label: "Applications", to: "/applications" },
-      { label: "Products", to: "/products" },
-      { label: "Engineering Capability", to: "/engineering" },
-      { label: "Technical Support", to: "/support" },
-      { label: "About", to: "/about" },
-      { label: "Contact", to: "/contact" },
+      { label: "应用领域", to: "/applications" },
+      { label: "产品中心", to: "/products" },
+      { label: "工程能力", to: "/engineering" },
+      { label: "技术支持", to: "/support" },
+      { label: "关于我们", to: "/about" },
+      { label: "联系我们", to: "/contact" },
     ],
   },
   {
-    title: "Products",
+    title: "产品中心",
     items: [
-      { label: "Molecular Sieve 3A", to: "/products#3a" },
-      { label: "Molecular Sieve 4A", to: "/products#4a" },
-      { label: "Molecular Sieve 5A", to: "/products#5a" },
-      { label: "Molecular Sieve 13X", to: "/products#13x" },
-      { label: "Activated Alumina", to: "/products#alumina" },
-      { label: "Catalysts", to: "/products#catalysts" },
+      { label: "3A 分子筛", to: "/products#3a" },
+      { label: "4A 分子筛", to: "/products#4a" },
+      { label: "5A 分子筛", to: "/products#5a" },
+      { label: "13X 分子筛", to: "/products#13x" },
+      { label: "活性氧化铝", to: "/products#alumina" },
+      { label: "催化剂", to: "/products#catalysts" },
     ],
   },
   {
-    title: "Applications",
+    title: "应用领域",
     items: [
-      { label: "Air Separation / ASU", to: "/applications#asu" },
-      { label: "Natural Gas / LNG", to: "/applications#lng" },
-      { label: "Hydrogen & Refining", to: "/applications#h2" },
-      { label: "Industrial Drying", to: "/applications#drying" },
-      { label: "Specialty Uses", to: "/applications#specialty" },
+      { label: "空分 / 制氧", to: "/applications#asu" },
+      { label: "天然气 / LNG", to: "/applications#lng" },
+      { label: "氢气与炼化", to: "/applications#h2" },
+      { label: "工业干燥", to: "/applications#drying" },
+      { label: "特种应用", to: "/applications#specialty" },
     ],
   },
   {
-    title: "Logistics & Export",
+    title: "物流与出口",
     items: [
-      { label: "FOB Shanghai / Ningbo", to: "/contact" },
-      { label: "CIF / DAP / DDP terms", to: "/contact" },
-      { label: "Sea & Rail to CIS", to: "/contact" },
-      { label: "25kg bags · 1000kg supersacks", to: "/contact" },
-      { label: "Steel drum packaging", to: "/contact" },
-      { label: "EAC / REACH documentation", to: "/contact" },
+      { label: "FOB 上海 / 宁波", to: "/contact" },
+      { label: "CIF / DAP / DDP 条款", to: "/contact" },
+      { label: "海运及中欧班列", to: "/contact" },
+      { label: "25kg 袋装 · 吨袋", to: "/contact" },
+      { label: "钢桶包装", to: "/contact" },
+      { label: "EAC / REACH 文件", to: "/contact" },
     ],
   },
 ];
@@ -53,24 +53,23 @@ const Footer = () => (
         <div className="lg:col-span-4">
           <div className="flex items-center gap-3 mb-6">
             <div className="flex h-10 w-10 items-center justify-center bg-primary text-primary-foreground">
-              <span className="font-display text-xl font-bold leading-none">H</span>
+              <span className="font-display text-xl font-bold leading-none">恒</span>
             </div>
             <div>
-              <div className="font-display text-base font-bold tracking-tight">HENGYE MICRON</div>
+              <div className="font-display text-base font-bold tracking-tight">恒业微晶 HENGYE</div>
               <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/50">
-                Industrial Adsorbents · Since 1998
+                工业吸附剂 · 始于 1998
               </div>
             </div>
           </div>
           <p className="text-sm text-white/60 leading-relaxed mb-8 max-w-md">
-            Shanghai Hengye Micron (上海恒业微晶) manufactures zeolite molecular sieves,
-            activated alumina and engineered catalysts for industrial gas purification —
-            specified by procurement and process teams in 60+ countries.
+            上海恒业微晶科技有限公司专业生产沸石分子筛、活性氧化铝及工业催化剂,
+            为全球工业气体净化领域提供吸附材料,服务来自 60 余个国家的采购与工艺团队。
           </p>
-          <div className="space-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-white/60">
-            <div><span className="text-primary">↳</span> Pudong New District, Shanghai, China</div>
+          <div className="space-y-3 font-mono text-[11px] tracking-[0.15em] text-white/60">
+            <div><span className="text-primary">↳</span> 中国上海市浦东新区</div>
             <div><span className="text-primary">↳</span> sales@hengyemicron.com</div>
-            <div><span className="text-primary">↳</span> rfq@hengyemicron.com — RU desk</div>
+            <div><span className="text-primary">↳</span> rfq@hengyemicron.com — 俄罗斯专线</div>
             <div><span className="text-primary">↳</span> +86 21 5000 0000</div>
           </div>
         </div>
@@ -78,7 +77,7 @@ const Footer = () => (
         <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
           {cols.map((c) => (
             <div key={c.title}>
-              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-5">
+              <div className="font-mono text-[10px] tracking-[0.2em] text-primary mb-5">
                 {c.title}
               </div>
               <ul className="space-y-3">
@@ -95,11 +94,11 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">
-        <div>© 1998–{new Date().getFullYear()} Shanghai Hengye Micron · All rights reserved</div>
+      <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 font-mono text-[10px] tracking-[0.2em] text-white/40">
+        <div>© 1998–{new Date().getFullYear()} 上海恒业微晶科技有限公司 · 版权所有</div>
         <div className="flex gap-6">
           <span>ISO 9001 · 14001 · REACH · EAC</span>
-          <span>EN / RU / 中文</span>
+          <span>中文 / EN / RU</span>
         </div>
       </div>
     </div>

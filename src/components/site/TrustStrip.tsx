@@ -1,8 +1,8 @@
 const metrics = [
-  { value: "26+", label: "Years of Adsorbent Manufacturing", sub: "Since 1998" },
-  { value: "60+", label: "Countries & Regions Served", sub: "Global export network" },
-  { value: "100+", label: "Industrial Partners Worldwide", sub: "Long-term supply" },
-  { value: "24/7", label: "Technical Response & Lifecycle Support", sub: "Engineering team on call" },
+  { value: "26+", label: "吸附剂制造经验", sub: "始于 1998 年" },
+  { value: "60+", label: "服务国家与地区", sub: "全球出口网络" },
+  { value: "100+", label: "工业合作伙伴", sub: "长期稳定供应" },
+  { value: "24/7", label: "技术响应与全生命周期支持", sub: "专家工程团队" },
 ];
 
 const TrustStrip = () => (
@@ -14,7 +14,7 @@ const TrustStrip = () => (
             {m.value}
           </div>
           <div className="mt-3 text-[13px] font-medium text-foreground leading-snug">{m.label}</div>
-          <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{m.sub}</div>
+          <div className="mt-1 font-mono text-[10px] tracking-[0.2em] text-muted-foreground">{m.sub}</div>
         </div>
       ))}
     </div>

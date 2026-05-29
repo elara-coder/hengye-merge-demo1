@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 export default function RFQBlock({
-  title = "Need adsorbent solutions for your industrial process?",
+  title = "为您的工业工艺寻找合适的吸附剂方案?",
   subtitle,
 }: {
   title?: string;
@@ -14,15 +14,15 @@ export default function RFQBlock({
       <div className="container-wide relative">
         <div className="grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-8">
-            <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-white/70 mb-5">
-              — Request For Quote
+            <div className="font-mono text-[11px] tracking-[0.25em] text-white/70 mb-5">
+              — 询价咨询
             </div>
-            <h2 className="font-display text-3xl lg:text-5xl font-semibold tracking-tight leading-[1.05] max-w-3xl">
+            <h2 className="font-display text-3xl lg:text-5xl font-semibold tracking-tight leading-[1.15] max-w-3xl">
               {title}
             </h2>
             <p className="mt-6 max-w-2xl text-white/80 leading-relaxed text-base lg:text-lg">
               {subtitle ??
-                "Share your process conditions — gas composition, temperature, pressure, vessel volume and target spec. Our engineering team responds within one business day with a tailored adsorbent selection, loading plan and indicative pricing."}
+                "请提供您的工艺工况——气体组成、温度、压力、容器体积及目标指标。我们的工程团队将在 1 个工作日内回复,提供定制化吸附剂选型、装填方案及参考报价。"}
             </p>
           </div>
           <div className="lg:col-span-4 flex flex-col gap-3">
@@ -30,15 +30,15 @@ export default function RFQBlock({
               to="/contact"
               className="group inline-flex items-center justify-between h-16 px-7 bg-white text-foreground hover:bg-foreground hover:text-white transition-colors"
             >
-              <span className="text-[12px] font-medium uppercase tracking-[0.15em]">Submit RFQ</span>
+              <span className="text-[13px] font-medium tracking-[0.15em]">提交询价单</span>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/support"
               className="group inline-flex items-center justify-between h-16 px-7 border border-white/40 text-white hover:bg-white hover:text-primary transition-colors"
             >
-              <span className="text-[12px] font-medium uppercase tracking-[0.15em]">
-                Download TDS / SDS
+              <span className="text-[13px] font-medium tracking-[0.15em]">
+                下载 TDS / SDS
               </span>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>

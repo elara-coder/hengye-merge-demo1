@@ -23,126 +23,126 @@ const APPS: App[] = [
   {
     id: "asu",
     num: "01",
-    title: "Air Separation & Oxygen Generation",
+    title: "空气分离与制氧",
     image: asu,
     problem:
-      "Cryogenic ASUs and PSA/VPSA O₂ generators require feed air free from H₂O, CO₂ and hydrocarbons to prevent ice formation and protect downstream cold boxes and adsorbers.",
+      "深冷空分及 PSA / VPSA 制氧装置要求进料空气脱除 H₂O、CO₂ 及烃类,以防止结冰并保护下游冷箱及吸附器。",
     process: [
-      "Feed air compression (4–10 barg) and after-cooling",
-      "Pre-purification on alumina / 13X layered bed (TSA)",
-      "Cryogenic distillation or PSA / VPSA separation",
-      "Periodic thermal regeneration with waste N₂ at 150–250 °C",
+      "原料空气压缩 (4–10 barg) 与后冷",
+      "活性氧化铝 / 13X 分层床预净化 (TSA)",
+      "深冷蒸馏或 PSA / VPSA 分离",
+      "废氮 150–250 °C 周期性热再生",
     ],
     products: [
-      { code: "AL-DRY", name: "Activated Alumina (PSA Grade)", note: "Bulk H₂O removal layer", to: "/products#alumina" },
-      { code: "13X-APG", name: "13X APG Molecular Sieve", note: "CO₂ + residual H₂O removal", to: "/products#13x" },
-      { code: "5A-OXY", name: "5A Oxygen Grade", note: "N₂ adsorption for VPSA O₂ generation", to: "/products#5a" },
+      { code: "AL-DRY", name: "活性氧化铝 (PSA 级)", note: "脱水主吸附层", to: "/products#alumina" },
+      { code: "13X-APG", name: "13X APG 分子筛", note: "脱除 CO₂ 及残余水分", to: "/products#13x" },
+      { code: "5A-OXY", name: "5A 制氧级", note: "VPSA 制氧吸附剂", to: "/products#5a" },
     ],
     data: [
-      { k: "Dew point achieved", v: "≤ −70 °C" },
-      { k: "CO₂ slip", v: "< 1 ppm" },
-      { k: "Cycle time (TSA)", v: "4–8 h" },
-      { k: "Lifetime", v: "3–5 years" },
+      { k: "出口露点", v: "≤ −70 °C" },
+      { k: "CO₂ 残余", v: "< 1 ppm" },
+      { k: "TSA 循环时间", v: "4–8 h" },
+      { k: "使用寿命", v: "3–5 年" },
     ],
   },
   {
     id: "lng",
     num: "02",
-    title: "Natural Gas Treatment & LNG",
+    title: "天然气处理与 LNG",
     image: lng,
     problem:
-      "Pipeline and feed gas to LNG trains must be deeply dehydrated and desulfurized to avoid hydrate formation, ice plugging in cold sections, and corrosion of cryogenic exchangers.",
+      "进入 LNG 液化装置的管道气与原料气需深度脱水脱硫,避免水合物生成、冷箱冰堵以及低温换热器腐蚀。",
     process: [
-      "Inlet separation and amine treatment (CO₂ / H₂S bulk)",
-      "TSA dehydration on 4A / 13X to ≤ 0.1 ppmv H₂O",
-      "Mercaptan and Hg guard beds",
-      "Cryogenic liquefaction and storage",
+      "入口分离与胺洗 (脱 CO₂ / H₂S)",
+      "4A / 13X 上 TSA 脱水至 ≤ 0.1 ppmv H₂O",
+      "硫醇及汞保护床",
+      "深冷液化与储罐",
     ],
     products: [
-      { code: "4A-LNG", name: "4A LNG Grade", note: "Deep H₂O removal, long cycle life", to: "/products#4a" },
-      { code: "13X-LNG", name: "13X LNG Grade", note: "H₂S + mercaptan + H₂O", to: "/products#13x" },
-      { code: "AL-CL", name: "Cl / F-Resistant Alumina", note: "Promoted alumina guard layer", to: "/products#alumina" },
+      { code: "4A-LNG", name: "4A LNG 级", note: "深度脱水,使用寿命长", to: "/products#4a" },
+      { code: "13X-LNG", name: "13X LNG 级", note: "脱除 H₂S + 硫醇 + H₂O", to: "/products#13x" },
+      { code: "AL-CL", name: "抗 Cl / F 氧化铝", note: "改性氧化铝保护层", to: "/products#alumina" },
     ],
     data: [
-      { k: "Outlet H₂O", v: "≤ 0.1 ppmv" },
-      { k: "H₂S removal", v: "≤ 4 ppmv" },
-      { k: "Regen temp", v: "260–290 °C" },
-      { k: "Vessel range", v: "Ø 1.5–4.5 m" },
+      { k: "出口 H₂O", v: "≤ 0.1 ppmv" },
+      { k: "H₂S 去除", v: "≤ 4 ppmv" },
+      { k: "再生温度", v: "260–290 °C" },
+      { k: "塔径范围", v: "Ø 1.5–4.5 m" },
     ],
   },
   {
     id: "h2",
     num: "03",
-    title: "Hydrogen, Syngas, Refining & Petrochemicals",
+    title: "氢气、合成气、炼化与石化",
     image: refinery,
     problem:
-      "H₂ PSA, naphtha reforming, isomerization, and olefin plants require selective adsorbents and catalysts that survive aggressive feeds, deliver high purity and resist crushing under cycling pressure swings.",
+      "氢气 PSA、石脑油重整、异构化及烯烃装置要求吸附剂与催化剂具备抗腐蚀进料、高纯输出及循环抗压强度。",
     process: [
-      "Reformer / electrolyzer / SMR off-gas conditioning",
-      "Multi-bed PSA on 5A + 13X + activated carbon",
-      "Liquid hydrocarbon drying on 3A or 4A",
-      "Hydrogenation / dehydration catalyst stages",
+      "重整 / 电解 / SMR 尾气调质",
+      "5A + 13X + 活性炭多床 PSA",
+      "3A 或 4A 上液态烃干燥",
+      "加氢 / 脱水催化剂工段",
     ],
     products: [
-      { code: "5A-PSA", name: "5A Hydrogen PSA Grade", note: "CO, CH₄, N₂ removal at high cycling", to: "/products#5a" },
-      { code: "13X-HP", name: "13X High-Purity", note: "Trace CO₂ / H₂O polishing", to: "/products#13x" },
-      { code: "CAT-HY", name: "Hydrogenation Catalyst", note: "Selective hydrogenation duty", to: "/products#catalysts" },
+      { code: "5A-PSA", name: "5A 氢气 PSA 级", note: "高循环下脱除 CO、CH₄、N₂", to: "/products#5a" },
+      { code: "13X-HP", name: "13X 高纯级", note: "微量 CO₂ / H₂O 精脱", to: "/products#13x" },
+      { code: "CAT-HY", name: "加氢催化剂", note: "选择性加氢工艺", to: "/products#catalysts" },
     ],
     data: [
-      { k: "H₂ purity", v: "≥ 99.999 %" },
-      { k: "Recovery", v: "85–90 %" },
-      { k: "Cycle pressure", v: "20–40 barg" },
-      { k: "Crush strength", v: "≥ 90 N" },
+      { k: "H₂ 纯度", v: "≥ 99.999 %" },
+      { k: "回收率", v: "85–90 %" },
+      { k: "循环压力", v: "20–40 barg" },
+      { k: "抗压强度", v: "≥ 90 N" },
     ],
   },
   {
     id: "drying",
     num: "04",
-    title: "Industrial Drying & Purification",
+    title: "工业干燥与净化",
     image: dryer,
     problem:
-      "Compressed air, refrigerants, insulating glass and solvent streams require reliable, low-pressure-drop adsorbents matched to thermal or pressure-swing regeneration.",
+      "压缩空气、制冷剂、中空玻璃及溶剂物流需要低压降、稳定可靠且匹配热再生或压力变换再生的吸附剂。",
     process: [
-      "Compressor / receiver",
-      "Heatless or heated regenerative dryer (twin tower)",
-      "Particulate and oil filtration",
-      "Point-of-use sampling and dew-point monitoring",
+      "压缩机 / 储气罐",
+      "无热或加热再生干燥机 (双塔)",
+      "颗粒物与油雾过滤",
+      "终端取样及露点监测",
     ],
     products: [
-      { code: "AL-CA", name: "Activated Alumina CA-Grade", note: "Standard heatless dryer fill", to: "/products#alumina" },
-      { code: "4A-IG", name: "4A Insulating Glass", note: "Spacer-bar fill for IGUs", to: "/products#4a" },
-      { code: "13X-SD", name: "13X Solvent Drying", note: "Polar solvent dehydration", to: "/products#13x" },
+      { code: "AL-CA", name: "活性氧化铝 CA 级", note: "无热再生干燥机标准填料", to: "/products#alumina" },
+      { code: "4A-IG", name: "4A 中空玻璃级", note: "中空玻璃间隔条填料", to: "/products#4a" },
+      { code: "13X-SD", name: "13X 溶剂干燥级", note: "极性溶剂脱水", to: "/products#13x" },
     ],
     data: [
-      { k: "Pressure dew point", v: "−40 to −70 °C" },
-      { k: "Bed life", v: "3–5 years" },
-      { k: "Bulk density", v: "0.70–0.78 g/ml" },
-      { k: "Particle sizes", v: "1.6 / 3.2 / 4.0 mm" },
+      { k: "压力露点", v: "−40 至 −70 °C" },
+      { k: "床层寿命", v: "3–5 年" },
+      { k: "堆密度", v: "0.70–0.78 g/ml" },
+      { k: "粒径", v: "1.6 / 3.2 / 4.0 mm" },
     ],
   },
   {
     id: "specialty",
     num: "05",
-    title: "Specialty Industrial Uses",
+    title: "特种工业应用",
     image: factory,
     problem:
-      "Medical oxygen concentrators, ethanol dehydration, electronic gases, and custom catalyst supports demand high-purity, contaminant-free media with tightly controlled particle morphology.",
+      "医用制氧、乙醇脱水、电子气体及定制催化剂载体对吸附剂的纯度、痕量杂质控制与颗粒形貌一致性有极高要求。",
     process: [
-      "Customer-specified packaging (drum / FIBC / vacuum)",
-      "Sub-ppm contaminant profiling per lot",
-      "Engineered catalyst support fabrication",
-      "Dedicated QC and batch traceability",
+      "按客户要求包装 (桶 / 吨袋 / 真空)",
+      "每批进行 ppb 级痕量杂质分析",
+      "定制催化剂载体加工",
+      "专属质检及批次追溯",
     ],
     products: [
-      { code: "5A-MED", name: "5A Medical Oxygen", note: "Concentrator grade", to: "/products#5a" },
-      { code: "3A-ETH", name: "3A Ethanol Dehydration", note: "Fuel-grade ethanol PSA", to: "/products#3a" },
-      { code: "CAT-S", name: "Catalyst Supports", note: "γ-Al₂O₃, custom shapes", to: "/products#catalysts" },
+      { code: "5A-MED", name: "5A 医用制氧级", note: "制氧浓缩器专用", to: "/products#5a" },
+      { code: "3A-ETH", name: "3A 乙醇脱水级", note: "燃料级乙醇 PSA", to: "/products#3a" },
+      { code: "CAT-S", name: "催化剂载体", note: "γ-Al₂O₃,定制形状", to: "/products#catalysts" },
     ],
     data: [
-      { k: "O₂ purity (PSA)", v: "≥ 93 %" },
-      { k: "Ethanol outlet", v: "≥ 99.9 wt%" },
-      { k: "Trace metals", v: "ppb-level" },
-      { k: "MOQ", v: "From 25 kg" },
+      { k: "O₂ 纯度 (PSA)", v: "≥ 93 %" },
+      { k: "乙醇出口浓度", v: "≥ 99.9 wt%" },
+      { k: "痕量金属", v: "ppb 级" },
+      { k: "起订量", v: "25 kg 起" },
     ],
   },
 ];
@@ -151,14 +151,14 @@ export default function Applications() {
   return (
     <>
       <PageHero
-        eyebrow="Applications"
-        title="Process-engineered adsorbent solutions"
-        intro="Five core process domains. Every solution mapped from problem statement through process flow, recommended product family and verified technical data — ready for industrial procurement review."
+        eyebrow="应用领域"
+        title="工艺导向的吸附剂解决方案"
+        intro="覆盖五大核心工业工艺领域。每一解决方案均从问题陈述到工艺流程、推荐产品系列及验证数据完整呈现,可直接用于工业采购评审。"
         image={refinery}
       />
 
       <section className="border-b border-border bg-surface">
-        <div className="container-wide py-6 flex flex-wrap gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-[0.18em]">
+        <div className="container-wide py-6 flex flex-wrap gap-x-8 gap-y-3 font-mono text-xs tracking-[0.18em]">
           {APPS.map((a) => (
             <a key={a.id} href={`#${a.id}`} className="text-muted-foreground hover:text-primary">
               {a.num} · {a.title}
@@ -171,17 +171,17 @@ export default function Applications() {
         <section key={a.id} id={a.id} className={`section ${i % 2 ? "bg-surface border-y border-border" : ""}`}>
           <div className="container-wide grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
-                Application {a.num}
+              <div className="font-mono text-[11px] tracking-[0.18em] text-primary">
+                应用 {a.num}
               </div>
               <h2 className="mt-3 h-section font-display">{a.title}</h2>
               <img src={a.image} alt={a.title} loading="lazy" className="mt-8 aspect-[4/3] w-full object-cover" />
             </div>
 
             <div className="lg:col-span-7 space-y-10">
-              <Block label="Problem"><p className="text-muted-foreground leading-relaxed">{a.problem}</p></Block>
+              <Block label="工艺挑战"><p className="text-muted-foreground leading-relaxed">{a.problem}</p></Block>
 
-              <Block label="Process">
+              <Block label="工艺流程">
                 <ol className="space-y-3">
                   {a.process.map((s, idx) => (
                     <li key={idx} className="flex gap-4 border-b border-border pb-3 last:border-0">
@@ -194,7 +194,7 @@ export default function Applications() {
                 </ol>
               </Block>
 
-              <Block label="Recommended Products">
+              <Block label="推荐产品">
                 <div className="grid sm:grid-cols-3 gap-px bg-border border border-border">
                   {a.products.map((p) => (
                     <Link to={p.to} key={p.code} className="bg-background p-5 hover:bg-surface">
@@ -206,7 +206,7 @@ export default function Applications() {
                 </div>
               </Block>
 
-              <Block label="Technical Data">
+              <Block label="技术数据">
                 <div className="grid sm:grid-cols-2 gap-x-10">
                   {a.data.map((d) => (
                     <div key={d.k} className="data-row">
@@ -220,15 +220,15 @@ export default function Applications() {
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link
                   to="/contact"
-                  className="group inline-flex items-center gap-3 bg-primary px-5 py-3 font-mono text-xs uppercase tracking-[0.18em] text-primary-foreground hover:bg-primary-deep"
+                  className="group inline-flex items-center gap-3 bg-primary px-5 py-3 font-mono text-xs tracking-[0.18em] text-primary-foreground hover:bg-primary-deep"
                 >
-                  RFQ for this process <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                  针对本工艺询价 <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   to="/support"
-                  className="inline-flex items-center gap-3 border border-border px-5 py-3 font-mono text-xs uppercase tracking-[0.18em] hover:border-primary"
+                  className="inline-flex items-center gap-3 border border-border px-5 py-3 font-mono text-xs tracking-[0.18em] hover:border-primary"
                 >
-                  Download TDS / SDS
+                  下载 TDS / SDS
                 </Link>
               </div>
             </div>
@@ -236,7 +236,7 @@ export default function Applications() {
         </section>
       ))}
 
-      <RFQBlock title="Specify your process — receive engineered selection." />
+      <RFQBlock title="提供工艺数据 · 获取定制选型方案" />
     </>
   );
 }
