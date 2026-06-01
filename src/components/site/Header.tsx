@@ -7,7 +7,7 @@ const NAV = [
   { to: "/products", label: "产品中心" },
   { to: "/engineering", label: "工程能力" },
   { to: "/support", label: "技术支持" },
-  { to: "/about", label: "关于我们" },
+  { to: "/about", label: "关于恒业" },
   { to: "/contact", label: "联系我们" },
 ];
 
