@@ -8,7 +8,7 @@ const cols = [
       { label: "产品中心", to: "/products" },
       { label: "工程能力", to: "/engineering" },
       { label: "技术支持", to: "/support" },
-      { label: "关于我们", to: "/about" },
+      { label: "关于恒业", to: "/about" },
       { label: "联系我们", to: "/contact" },
     ],
   },
