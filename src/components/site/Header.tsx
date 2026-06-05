@@ -3,10 +3,9 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const NAV = [
-  { to: "/applications", label: "应用领域" },
   { to: "/products", label: "产品中心" },
+  { to: "/applications", label: "应用领域" },
   { to: "/engineering", label: "工程能力" },
-  { to: "/support", label: "技术支持" },
   { to: "/about", label: "关于恒业" },
   { to: "/contact", label: "联系我们" },
 ];

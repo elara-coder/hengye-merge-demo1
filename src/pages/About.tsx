@@ -1,16 +1,40 @@
-import { PageHero } from "@/components/site/Primitives";
+import { Link } from "react-router-dom";
 import RFQBlock from "@/components/site/RFQBlock";
 import factory from "@/assets/factory-floor.jpg";
 import lab from "@/assets/lab-qc.jpg";
-import { FileText, FlaskConical, Wrench, LifeBuoy, PlayCircle } from "lucide-react";
+import {
+  FileText,
+  FlaskConical,
+  Wrench,
+  LifeBuoy,
+  PlayCircle,
+  Building2,
+  History,
+  Newspaper,
+  Globe2,
+  Video,
+  Download,
+  Compass,
+  RotateCw,
+  Activity,
+  ShieldCheck,
+  ArrowRight,
+} from "lucide-react";
 
 const ANCHORS = [
-  { id: "overview", label: "公司总览" },
-  { id: "history", label: "历史和里程碑" },
-  { id: "support", label: "技术支持" },
-  { id: "news", label: "新闻和事件" },
-  { id: "markets", label: "全球市场" },
-  { id: "video", label: "我们的宣传影片" },
+  { id: "overview", label: "公司总览", en: "Company Overview", icon: Building2 },
+  { id: "history", label: "历史和里程碑", en: "History & Milestones", icon: History },
+  { id: "support", label: "技术支持", en: "Technical Support", icon: Wrench },
+  { id: "news", label: "新闻和事件", en: "News & Events", icon: Newspaper },
+  { id: "markets", label: "全球市场", en: "Global Market", icon: Globe2 },
+  { id: "video", label: "我们的宣传影片", en: "Corporate Video", icon: Video },
+];
+
+const STATS = [
+  { v: "26+", k: "年专业经验", en: "Years Experience" },
+  { v: "60+", k: "服务国家与地区", en: "Countries & Regions" },
+  { v: "100+", k: "全球工业合作伙伴", en: "Industrial Partners" },
+  { v: "30,000 吨/年", k: "年产能", en: "Annual Capacity" },
 ];
 
 const MILESTONES = [
@@ -23,17 +47,19 @@ const MILESTONES = [
 ];
 
 const SUPPORT = [
-  { icon: FileText, t: "技术文档体系", d: "完整 TDS / MSDS / COA,配套 EAC、REACH 与第三方检测报告。" },
-  { icon: FlaskConical, t: "实验与中试支持", d: "XRD、BET、压碎强度、动态吸附与露点验证,可提供中试柱测试。" },
-  { icon: Wrench, t: "工程服务", d: "装填方案、再生曲线、寿命评估,匹配空分、LNG、PSA 工况。" },
-  { icon: LifeBuoy, t: "全生命周期响应", d: "选型 — 装填 — 再生 — 复检,中、英、俄三语技术对接。" },
+  { icon: FileText, t: "技术数据表 (TDS)", d: "每个牌号配套完整 TDS,含吸附等温线与物性数据。" },
+  { icon: Compass, t: "产品选型支持", d: "依据工艺工况与目标指标快速匹配合适的吸附剂牌号。" },
+  { icon: Activity, t: "吸附性能数据", d: "水、CO₂ 及烃类的平衡与动态吸附数据完整可查。" },
+  { icon: RotateCw, t: "再生指南", d: "推荐的 TSA 循环参数、升温曲线及寿命规划。" },
+  { icon: FlaskConical, t: "应用工艺咨询", d: "空分、LNG、PSA、干燥等典型工况的工程化咨询。" },
+  { icon: ShieldCheck, t: "质量与认证文档", d: "COA / MSDS / EAC / REACH / 第三方检测一站获取。" },
 ];
 
 const NEWS = [
-  { d: "2026 · 04", t: "恒业即将亮相 2026 莫斯科国际油气展(MIOGE)" },
-  { d: "2026 · 02", t: "产能扩张:新 13X-APG 产线 Q3 投产" },
-  { d: "2025 · 11", t: "全系列分子筛 EAC 认证完成续期" },
-  { d: "2025 · 09", t: "中东 LNG 项目实现连续 12 个月稳定供货" },
+  { d: "2026 · 04", tag: "展会", t: "恒业即将亮相 2026 莫斯科国际油气展(MIOGE)" },
+  { d: "2026 · 02", tag: "产能", t: "产能扩张:新 13X-APG 产线 Q3 投产" },
+  { d: "2025 · 11", tag: "认证", t: "全系列分子筛 EAC 认证完成续期" },
+  { d: "2025 · 09", tag: "项目", t: "中东 LNG 项目实现连续 12 个月稳定供货" },
 ];
 
 const MARKETS = [
@@ -48,51 +74,95 @@ const MARKETS = [
 export default function About() {
   return (
     <>
-      <PageHero
-        eyebrow="关于恒业"
-        title="始于 1998 年的专业工业吸附剂制造商"
-        intro="上海恒业微晶科技有限公司专注于沸石分子筛、活性氧化铝与工业催化剂的工程化生产,服务全球工艺产业的吸附剂选型、认证与稳定供应。"
-        image={factory}
-      />
-
-      {/* In-page anchor nav */}
-      <nav className="sticky top-16 z-30 border-b border-border bg-background/95 backdrop-blur">
-        <div className="container-wide flex gap-1 overflow-x-auto">
-          {ANCHORS.map((a) => (
-            <a
-              key={a.id}
-              href={`#${a.id}`}
-              className="shrink-0 px-4 py-4 font-mono text-[11px] tracking-[0.18em] uppercase text-muted-foreground hover:text-primary border-b-2 border-transparent hover:border-primary transition-colors"
+      {/* Hero */}
+      <section className="relative border-b border-border bg-surface-dark text-white overflow-hidden">
+        <img src={factory} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-surface-dark via-surface-dark/85 to-surface-dark/40" />
+        <div className="relative container-wide pt-20 pb-24 lg:pt-28 lg:pb-32">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-px w-10 bg-primary" />
+            <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-primary">
+              About Hengye · 关于恒业
+            </span>
+          </div>
+          <h1 className="h-display font-display max-w-4xl">
+            为全球工业应用工程化的吸附剂解决方案
+          </h1>
+          <p className="mt-6 max-w-2xl text-white/75 text-base md:text-lg leading-relaxed">
+            26 年专注于沸石分子筛、活性氧化铝与催化剂技术,服务全球 60 余个国家与地区的
+            工业气体、天然气、炼化与工业干燥客户。
+          </p>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link
+              to="/contact"
+              className="inline-flex items-center h-11 px-6 bg-primary text-primary-foreground text-[12px] font-medium tracking-[0.14em] hover:bg-primary-deep transition-colors"
             >
-              {a.label}
+              联系我们
+            </Link>
+            <a
+              href="#"
+              className="inline-flex items-center gap-2 h-11 px-6 border border-white/25 text-white text-[12px] font-medium tracking-[0.14em] hover:bg-white/10 transition-colors"
+            >
+              <Download className="h-4 w-4" />
+              下载公司简介
             </a>
-          ))}
+          </div>
         </div>
-      </nav>
+      </section>
 
-      {/* 1. 公司总览 */}
+      {/* 2. Section overview cards */}
+      <section className="border-b border-border bg-background">
+        <div className="container-wide py-14">
+          <div className="eyebrow mb-6">— 页面导航</div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-border border border-border">
+            {ANCHORS.map((a, i) => {
+              const Icon = a.icon;
+              return (
+                <a
+                  key={a.id}
+                  href={`#${a.id}`}
+                  className="group bg-background p-5 hover:bg-surface transition-colors"
+                >
+                  <div className="flex items-center justify-between mb-6">
+                    <Icon className="h-5 w-5 text-primary" />
+                    <span className="font-mono text-[10px] tracking-[0.18em] text-muted-foreground">
+                      0{i + 1}
+                    </span>
+                  </div>
+                  <div className="font-display text-[15px] font-semibold leading-tight">{a.label}</div>
+                  <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                    {a.en}
+                  </div>
+                  <ArrowRight className="mt-5 h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Company Overview */}
       <section id="overview" className="section scroll-mt-32">
         <div className="container-wide grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="eyebrow">— 01 / 公司总览</div>
             <h2 className="mt-3 h-section font-display">聚焦专业 · 工业规模</h2>
-          </div>
-          <div className="lg:col-span-7 space-y-5 text-muted-foreground leading-relaxed">
-            <p>
+            <p className="mt-5 text-muted-foreground leading-relaxed">
               上海恒业微晶科技有限公司位于上海 30,000 m² 生产基地,
               专业生产工程化沸石分子筛、活性氧化铝及负载型催化剂。
-              三条生产线与一体化质量管理体系,服务全球 100 余家工业合作伙伴。
+              我们的业务边界清晰——面向空气分离、天然气处理、氢气、炼化与工业干燥的吸附剂与催化剂。
+              这种专注是俄罗斯、独联体及欧盟采购团队在重复工况下指定恒业的根本原因。
             </p>
-            <p>
-              我们的业务边界清晰:面向空气分离、天然气处理、氢气、炼化与工业干燥的吸附剂与催化剂。
-              这种专注是我们工程深度与供应稳定性的来源,也是俄罗斯、独联体及欧盟采购团队
-              在重复工况下指定恒业的根本原因。
-            </p>
-            <div className="grid grid-cols-3 gap-px bg-border border border-border mt-6">
-              {[["1998", "成立"], ["30,000 吨/年", "产能"], ["60+", "出口国家"]].map(([v, k]) => (
-                <div key={k} className="bg-background p-5">
-                  <div className="font-display text-2xl font-bold">{v}</div>
-                  <div className="mt-1 font-mono text-[10px] tracking-[0.18em] text-muted-foreground">{k}</div>
+          </div>
+          <div className="lg:col-span-7">
+            <div className="grid grid-cols-2 gap-px bg-border border border-border">
+              {STATS.map((s) => (
+                <div key={s.k} className="bg-background p-6">
+                  <div className="font-display text-3xl lg:text-4xl font-bold text-primary">{s.v}</div>
+                  <div className="mt-3 text-sm font-semibold">{s.k}</div>
+                  <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                    {s.en}
+                  </div>
                 </div>
               ))}
             </div>
@@ -100,7 +170,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* 2. 历史和里程碑 */}
+      {/* 4. History */}
       <section id="history" className="section bg-surface border-y border-border scroll-mt-32">
         <div className="container-wide">
           <div className="eyebrow">— 02 / 历史和里程碑</div>
@@ -117,23 +187,28 @@ export default function About() {
         </div>
       </section>
 
-      {/* 3. 技术支持 */}
+      {/* 5. Technical Support */}
       <section id="support" className="section scroll-mt-32">
-        <div className="container-wide grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <div className="eyebrow">— 03 / 技术支持</div>
-            <h2 className="mt-3 h-section font-display">工程深度 · 文档体系 · 实验室能力</h2>
-            <p className="mt-5 text-muted-foreground leading-relaxed">
-              恒业以工艺团队的视角组织技术支持——从选型到再生,每一个阶段都有可验证的文档与数据支撑。
-            </p>
+        <div className="container-wide">
+          <div className="grid gap-10 lg:grid-cols-12 mb-12">
+            <div className="lg:col-span-6">
+              <div className="eyebrow">— 03 / 技术支持</div>
+              <h2 className="mt-3 h-section font-display">工程文档 · 性能数据 · 实验室支持</h2>
+            </div>
+            <div className="lg:col-span-5 lg:col-start-8 flex items-end">
+              <p className="text-muted-foreground leading-relaxed">
+                来自全球的采购及工艺工程师,依托恒业的文档体系与随时响应的技术团队完成
+                吸附剂选型、装填与认证。
+              </p>
+            </div>
           </div>
-          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-border border border-border">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
             {SUPPORT.map((s) => {
               const Icon = s.icon;
               return (
-                <div key={s.t} className="bg-background p-6">
-                  <Icon className="h-5 w-5 text-primary mb-4" />
-                  <div className="font-display text-lg font-semibold">{s.t}</div>
+                <div key={s.t} className="bg-background p-7 hover:bg-surface transition-colors">
+                  <Icon className="h-5 w-5 text-primary mb-5" />
+                  <div className="font-display text-base font-semibold">{s.t}</div>
                   <div className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.d}</div>
                 </div>
               );
@@ -142,29 +217,34 @@ export default function About() {
         </div>
       </section>
 
-      {/* 4. 新闻和事件 */}
+      {/* 6. News */}
       <section id="news" className="section bg-surface border-y border-border scroll-mt-32">
         <div className="container-wide grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <div className="eyebrow">— 04 / 新闻和事件</div>
-            <h2 className="mt-3 h-section font-display">动态与展会</h2>
+            <h2 className="mt-3 h-section font-display">动态 · 展会 · 产品更新</h2>
           </div>
-          <div className="lg:col-span-8 border-t border-border">
+          <div className="lg:col-span-8 grid sm:grid-cols-2 gap-px bg-border border border-border">
             {NEWS.map((n) => (
               <a
                 href="#"
                 key={n.t}
-                className="grid grid-cols-12 items-baseline border-b border-border py-5 hover:bg-background transition-colors"
+                className="bg-background p-6 hover:bg-surface transition-colors flex flex-col justify-between min-h-[180px]"
               >
-                <div className="col-span-12 md:col-span-3 font-mono text-xs tracking-[0.18em] text-primary">{n.d}</div>
-                <div className="col-span-12 md:col-span-9 font-semibold">{n.t}</div>
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[10px] tracking-[0.18em] text-primary">{n.d}</span>
+                  <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-muted-foreground border border-border px-2 py-1">
+                    {n.tag}
+                  </span>
+                </div>
+                <div className="mt-6 font-semibold leading-snug">{n.t}</div>
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 5. 全球市场 */}
+      {/* 7. Global Market */}
       <section id="markets" className="section scroll-mt-32">
         <div className="container-wide grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -174,7 +254,33 @@ export default function About() {
               多语种技术文档、本地化物流合作伙伴,
               以及面向俄罗斯 / 独联体与中东市场的专属服务团队。
             </p>
-            <img src={lab} alt="恒业出口业务" loading="lazy" className="mt-8 w-full aspect-[4/3] object-cover" />
+            {/* Lightweight world-map visualization */}
+            <div className="mt-8 relative aspect-[4/3] border border-border bg-surface overflow-hidden">
+              <img src={lab} alt="出口市场地图" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-30" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-background/80 via-background/40 to-transparent" />
+              <svg viewBox="0 0 400 300" className="absolute inset-0 h-full w-full">
+                <g fill="hsl(var(--primary))">
+                  <circle cx="120" cy="120" r="4" />
+                  <circle cx="200" cy="100" r="6" />
+                  <circle cx="240" cy="115" r="5" />
+                  <circle cx="260" cy="140" r="4" />
+                  <circle cx="290" cy="160" r="4" />
+                  <circle cx="180" cy="180" r="3" />
+                  <circle cx="320" cy="200" r="3" />
+                </g>
+                <g stroke="hsl(var(--primary))" strokeWidth="0.6" strokeDasharray="2 3" fill="none" opacity="0.6">
+                  <path d="M260 140 L120 120" />
+                  <path d="M260 140 L200 100" />
+                  <path d="M260 140 L240 115" />
+                  <path d="M260 140 L290 160" />
+                  <path d="M260 140 L180 180" />
+                  <path d="M260 140 L320 200" />
+                </g>
+              </svg>
+              <div className="absolute bottom-4 left-4 font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
+                上海 → 全球 60+ 国家
+              </div>
+            </div>
           </div>
           <div className="lg:col-span-7">
             <div className="grid sm:grid-cols-2 gap-px bg-border border border-border">
@@ -189,7 +295,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* 6. 我们的宣传影片 */}
+      {/* 8. Corporate Video */}
       <section id="video" className="section bg-surface-dark text-white scroll-mt-32">
         <div className="container-wide">
           <div className="grid gap-10 lg:grid-cols-12 mb-10">
@@ -227,6 +333,7 @@ export default function About() {
         </div>
       </section>
 
+      {/* 9. Bottom CTA via RFQBlock */}
       <RFQBlock />
     </>
   );
