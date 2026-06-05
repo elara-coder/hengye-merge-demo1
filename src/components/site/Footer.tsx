@@ -4,11 +4,10 @@ const cols = [
   {
     title: "网站导航",
     items: [
-      { label: "应用领域", to: "/applications" },
       { label: "产品中心", to: "/products" },
+      { label: "应用领域", to: "/applications" },
       { label: "工程能力", to: "/engineering" },
-      { label: "技术支持", to: "/support" },
-      { label: "关于恒业", to: "/about" },
+      { label: "关于恒业", to: "/about#support" },
       { label: "联系我们", to: "/contact" },
     ],
   },
